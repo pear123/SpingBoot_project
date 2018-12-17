@@ -1,0 +1,26 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /demo
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/homework1?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    type: com.mchange.v2.c3p0.ComboPooledDataSource
+
+
+mybatis:
+  mapper-locations: mapper/**/*xml
+  type-aliases-package: com.example.demo.entity
+
+logging:
+  file: E://IdeaProjects/SpingBoot_12_11/SpingBoot_12_11.log
+  level:
+    com.example.demo.dao: debug
+
+
+
+

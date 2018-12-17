@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserDao">
+    <cache
+            eviction="FIFO"
+    flushInterval="10000"
+    size="512"
+    readOnly="true"/>
+    <resultMap id="baseMap" type="com.example.demo.entity.User">
+        <id property="id" column="id"/>
+        <result property="phone" column="phone"></result>
+    </resultMap>
+    <select id="queryUser"  resultType="user">
+        select * from user
+    </select>
+    <insert id="addUser" parameterType="User">
+        insert into User(phone,password)values (#{phone},#{password})
+    </insert>
+    <update id="updatePassword" parameterType="UserVo">
+         update User set password=#{user.password} where phone=#{user.phone} and #{user.password}=#{re_password}
+    </update>
+    <select id="queryUserByPhone" parameterType="String" resultType="user">
+        select user.* from user where phone=#{phone}
+    </select>
+    <select id="queryUserById" parameterType="Integer" resultType="user">
+        select user.* from user where id=#{id}
+    </select>
+    <insert id="addUserWithObject" parameterType="com.example.demo.entity.User">
+        <selectKey resultType="int" order="AFTER" keyProperty="id">
+            select LAST_INSERT_ID() as id
+        </selectKey>
+        insert INTO user(phone,password)
+        VALUES (#{phone},#{password})
+    </insert>
+    <insert id="battchAddUsers" parameterType="java.util.List">
+        insert into user(phone,password)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.phone,jdbcType=VARCHAR},#{item.password,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>
