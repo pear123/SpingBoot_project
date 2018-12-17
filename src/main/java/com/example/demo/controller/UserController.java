@@ -316,6 +316,13 @@ public class UserController {
     }
 
 
+    /** 
+    * @Description: 查找时密码时，更改密码 
+    * @Param: [phone, password, re_password] 
+    * @return: java.lang.String 
+    * @Author: Lili Chen 
+    * @Date: 2018/12/17 
+    */
     @RequestMapping("findUpdatePassword")
     public @ResponseBody String find_update_Password(String phone,String password,String re_password)throws Exception{
         User user2=userService.queryUserByPhone(phone);

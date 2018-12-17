@@ -20,12 +20,26 @@ public class PasswordRecordController {
     private PasswordRecordService password_recordService;
     @Resource
     private UserService userService;
-    //跳转到获取密码的页面
+
+    /**
+    * @Description:  跳转到获取密码的页面
+    * @Param: []
+    * @return: java.lang.String
+    * @Author: Lili Chen
+    * @Date: 2018/12/17
+    */
     @RequestMapping("preFindPassword")
     public String  pre_findPassword()throws Exception {
         return "findPassword";
     }
-    //返回验证码
+
+    /**
+    * @Description: 返回验证码
+    * @Param: [model, phone]
+    * @return: java.lang.String
+    * @Author: Lili Chen
+    * @Date: 2018/12/17
+    */
     @RequestMapping(value="/validateNumber_",method= RequestMethod.POST,produces="text/html;charset=UTF-8")
     public @ResponseBody
     String validate_number(Model model, String phone) throws Exception {
@@ -46,7 +60,15 @@ public class PasswordRecordController {
         }
         return "Acquisition failure";
     }
-    //密码找回
+
+
+    /**
+    * @Description: 密码找回时核对验证码
+    * @Param: [model, phone, validate_number]
+    * @return: java.lang.String
+    * @Author: Lili Chen
+    * @Date: 2018/12/17
+    */
     @RequestMapping(value="/findPassword",method= RequestMethod.POST,produces="text/html;charset=UTF-8")
     public @ResponseBody
     String findPassword(Model model, String phone, String validate_number) throws Exception {
@@ -54,12 +76,10 @@ public class PasswordRecordController {
         Integer validate_number2=Integer.parseInt(validate_number);
         String password=password_recordService.getPassword(phone,validate_number2,date);
         if(password.equals("")){
-           /* return "Verification code error or timeout";*/
             return "fail";
         }
 
        return "success";
-       /* return "Your password is "+password2+",please login and modify in time";*/
     }
 
 }

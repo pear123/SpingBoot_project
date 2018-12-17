@@ -138,6 +138,14 @@ public class InformationController {
         return "fail";
     }
 
+    /**
+    * @Description: 有关分页的操作
+    * @Param: [model, page, u_id]
+    * @return: java.lang.String
+    * @Author: Lili Chen
+    * @Date: 2018/12/17
+    */
+
     @RequestMapping("queryInformationList")
     public String queryInformationList(Model model,Integer page,Integer u_id) throws Exception {
         int beginIndex=0;

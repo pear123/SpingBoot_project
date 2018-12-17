@@ -16,6 +16,15 @@ public class PasswordRecordServiceImpl implements PasswordRecordService {
     private PasswordRecordDao passwordRecordDao;
     @Autowired
     private UserDao userDao;
+    
+    
+    /** 
+    * @Description: 添加更改密码记录 
+    * @Param: [password_record] 
+    * @return: boolean 
+    * @Author: Lili Chen 
+    * @Date: 2018/12/17 
+    */
     @Override
     public boolean addPasswordRecord(PasswordRecord password_record) {
         User user=userDao.queryUserByPhone(password_record.getU_phone());
@@ -45,6 +54,13 @@ public class PasswordRecordServiceImpl implements PasswordRecordService {
         return false;
     }
 
+    /**
+    * @Description: 更改密码时进行验证码核对 （找回密码）
+    * @Param: [phone, validate_number, date]
+    * @return: java.lang.String
+    * @Author: Lili Chen
+    * @Date: 2018/12/17
+    */
     @Override
     public String getPassword(String phone, Integer validate_number, Date date) {
         User user=userDao.queryUserByPhone(phone);

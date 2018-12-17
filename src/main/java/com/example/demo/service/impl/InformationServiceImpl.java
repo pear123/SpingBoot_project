@@ -98,6 +98,14 @@ public class InformationServiceImpl implements InformationService {
         return information;
     }
 
+
+    /**
+    * @Description:  某用户消息条数
+    * @Param: [u_id]
+    * @return: int
+    * @Author: Lili Chen
+    * @Date: 2018/12/17
+    */
     @Override
     public int getCount(Integer u_id) {
         List<Information> informationList=informationDao.querryInformationByU_id(u_id);
@@ -105,6 +113,14 @@ public class InformationServiceImpl implements InformationService {
         return count;
     }
 
+
+    /**
+    * @Description: 获取某用户从beginIndex开始，size条数的消息
+    * @Param: [beginIndex, size, u_id]
+    * @return: java.util.List<com.example.demo.entity.Information>
+    * @Author: Lili Chen
+    * @Date: 2018/12/17
+    */
     @Override
     public List<Information> findInformationListIndex(int beginIndex, int size,Integer u_id) {
         Map map=new HashMap<>();

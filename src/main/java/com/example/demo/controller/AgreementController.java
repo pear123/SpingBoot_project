@@ -13,7 +13,14 @@ import javax.annotation.Resource;
 public class AgreementController {
     @Resource
     private AgreementService agreementService;
-    //查看注册协议
+
+    /**
+    * @Description:  查看注册协议
+    * @Param: [model]
+    * @return: java.lang.String
+    * @Author: Lili Chen
+    * @Date: 2018/12/17
+    */
     @RequestMapping("queryAgreement")
     public String  queryAgreement(Model model)throws Exception {
         Agreement agreement=agreementService.queryAgreementByName("注册协议");
