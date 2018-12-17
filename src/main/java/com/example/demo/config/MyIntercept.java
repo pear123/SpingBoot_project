@@ -14,14 +14,12 @@ public class MyIntercept implements HandlerInterceptor {
         Cookie[] cookies= request.getCookies();
         if (cookies!=null) {
             for (Cookie cookie:cookies) {
-                System.out.println("cookie"+cookie.getName());
                 if (cookie.getName().equals("userPhone")) {
                     return true;
                 }
             }
         }
         response.sendRedirect("/demo/myUser/getLogin");
-        System.out.println("名字为空");
         return false;
         }
 

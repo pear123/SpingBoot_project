@@ -7,7 +7,10 @@ import com.example.demo.entity.User;
 import com.example.demo.service.InformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -93,5 +96,22 @@ public class InformationServiceImpl implements InformationService {
         Information information=null;
         information=informationDao.querryInformationById(id);
         return information;
+    }
+
+    @Override
+    public int getCount(Integer u_id) {
+        List<Information> informationList=informationDao.querryInformationByU_id(u_id);
+        int count=informationList.size();
+        return count;
+    }
+
+    @Override
+    public List<Information> findInformationListIndex(int beginIndex, int size,Integer u_id) {
+        Map map=new HashMap<>();
+        map.put("beginIndex",beginIndex);
+        map.put("size",size);
+        map.put("u_id",u_id);
+        List<Information> informationList= informationDao.findInformationListIndex(map);
+        return informationList;
     }
 }

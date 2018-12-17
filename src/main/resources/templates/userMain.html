@@ -85,6 +85,8 @@
                     </div>
                 </div>
             </div>
+            <a th:href="@{/myInformation/queryInformationList(u_id=${u_id},page=1)}">首页</a>&nbsp;<a th:href="@{/myInformation/queryInformationList(u_id=${u_id},page=${page-1})}">上一页</a>&nbsp;<a th:href="@{/myInformation/queryInformationList(u_id=${u_id},page=${page+1})}">下一页</a>&nbsp;<a th:href="@{/myInformation/queryInformationList(u_id=${u_id},page=${pageCount})}">末页</a><br/>
+
         </a>
 
     </div>

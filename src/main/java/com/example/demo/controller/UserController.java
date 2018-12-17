@@ -145,13 +145,15 @@ public class UserController {
                         cookie.setPath("/"); // 设置路径（默认）
                         response.addCookie(cookie);
 
-                        List<Information> inforList=informationService.queryInformationByUid(user1.getId());
+                     /*   List<Information> inforList=informationService.queryInformationByUid(user1.getId());*/
+                        List<Information> inforList=informationService.findInformationListIndex(0,4,user1.getId());
                         Score score=scoreService.queryScore(user1.getId());
                         model.addAttribute("phone",user.getPhone());
                         model.addAttribute("message"," ");
                         model.addAttribute("inforList",inforList);
                         model.addAttribute("u_id",user1.getId());
                         model.addAttribute("score",score.getSc());
+                        model.addAttribute("page",1);
                         return "userMain";
                     }else{
                         //输入错误一次后必定有记录

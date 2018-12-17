@@ -11,4 +11,6 @@ public interface InformationService {
     List<Information> queryInformationList();
     List<Information> queryInformationByUid(Integer id);
     Information queryInformationById(Integer id);
+    int getCount(Integer u_id);
+    List<Information> findInformationListIndex(int beginIndex, int size,Integer u_id);
 }

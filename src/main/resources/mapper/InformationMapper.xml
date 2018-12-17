@@ -23,4 +23,8 @@
     <select id="querryInformationById" parameterType="Integer" resultType="information">
         select information.* from information where infor_id=#{infor_id}
     </select>
+    <select id="findInformationListIndex" parameterType="Object" resultType="information">
+      select * from information where u_id=#{u_id} limit #{beginIndex},#{size}
+
+    </select>
 </mapper>

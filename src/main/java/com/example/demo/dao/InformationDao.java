@@ -4,6 +4,8 @@ import com.example.demo.entity.Information;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
+
 @Repository
 public interface InformationDao {
     List<Information> querryInforList();
@@ -12,4 +14,5 @@ public interface InformationDao {
     void updateInformation(Information information);
     List<Information> querryInformationByU_id(Integer u_id);
     Information querryInformationById(Integer id);
+    List<Information> findInformationListIndex(Map map);
 }
